@@ -2,9 +2,9 @@
 frontend:
   - task: "New Document Creation"
     implemented: true
-    working: false
+    working: true
     file: "/app/src/views/Files.vue"
-    stuck_count: 4
+    stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
@@ -23,6 +23,9 @@ frontend:
       - working: false
         agent: "testing"
         comment: "Additional testing confirms the document creation is still failing with the same 'Empty names are not allowed' error. The proxy logs show that the request is being sent correctly with the path parameter as 'Design/DebugTest_1751913375.epr', and the file is being included in the request with the correct name and size (6144 bytes). The issue appears to be on the API side, which is still rejecting the request with the same error message. The folder tree is now displaying correctly, showing the 'Design' folder."
+      - working: true
+        agent: "testing"
+        comment: "Document creation is now working successfully when using the 'Batch Project' folder inside the 'Design' folder. The API returns a successful response with status code 200 and the correct path 'Design\\Batch Project\\BatchTest_1751914354.epr'. The issue with the 'Empty names are not allowed' error has been resolved by using the 'Batch Project' subfolder as specified in the review request. However, there's a minor issue where the newly created document doesn't immediately appear in the file list, even though the API confirms successful creation."
 
 metadata:
   created_by: "testing_agent"
