@@ -44,6 +44,30 @@
           </ul>
         </div>
         <div v-else class="no-files">No files in this folder.</div>
+        
+        <!-- New Document Modal -->
+        <div v-if="showNewDocumentModal" class="modal-overlay" @click="closeModal">
+          <div class="modal-content" @click.stop>
+            <h3>Create New Document</h3>
+            <p>Enter a name for your new document:</p>
+            <input 
+              v-model="newDocumentName" 
+              type="text" 
+              placeholder="Document name"
+              class="new-document-input"
+              @keyup.enter="createNewDocument"
+              @keyup.escape="closeModal"
+              ref="newDocumentInput"
+            />
+            <div class="modal-actions">
+              <button class="cancel-btn" @click="closeModal">Cancel</button>
+              <button class="create-btn" @click="createNewDocument" :disabled="!newDocumentName.trim() || isUploading">
+                {{ isUploading ? 'Creating...' : 'Create' }}
+              </button>
+            </div>
+            <div v-if="uploadError" class="error">{{ uploadError }}</div>
+          </div>
+        </div>
       </div>
     </div>
     <div v-if="error" class="error">{{ error }}</div>
