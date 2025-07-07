@@ -23,7 +23,13 @@
       <div class="explorer-files">
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
           <h3 style="margin: 0;">Files</h3>
-          <!-- New button and input removed as requested -->
+          <button 
+            v-if="selectedFolderPath" 
+            class="new-btn" 
+            @click="onNewClick"
+            title="Create New Document">
+            + New Document
+          </button>
         </div>
         <div v-if="selectedFiles.length">
           <ul class="file-list">
