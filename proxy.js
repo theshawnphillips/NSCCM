@@ -1,8 +1,13 @@
 // Simple EngageCX proxy server for CORS/browser workaround
 import express from 'express';
 import axios from 'axios';
+import multer from 'multer';
+
 const app = express();
 const PORT = 3001;
+
+// Configure multer for file uploads
+const upload = multer();
 
 app.use(express.json());
 
