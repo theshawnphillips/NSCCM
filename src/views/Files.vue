@@ -128,13 +128,15 @@ async function createNewDocument() {
       throw new Error('No authentication token found')
     }
     
-    // Construct the full path for the new document
-    const fullPath = selectedFolderPath.value ? `${selectedFolderPath.value}\\${fileName}` : fileName
+    // Construct the full path for the new document (use forward slashes for API)
+    const fullPath = selectedFolderPath.value ? `${selectedFolderPath.value}/${fileName}` : fileName
+    // Replace backslashes with forward slashes for the API
+    const apiPath = fullPath.replace(/\\/g, '/')
     
     await eos.uploadNewDocumentViaProxy({
       token,
       workspace: 'Default',
-      path: fullPath,
+      path: apiPath,
       fileName
     })
     
