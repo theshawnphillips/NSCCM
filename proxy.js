@@ -75,11 +75,15 @@ app.post('/proxy/files/upload', upload.single('file'), async (req, res) => {
     console.log('Making request to:', uploadUrl);
     console.log('Query params:', { workspace, path });
     
+    // Make sure path is properly encoded
+    const encodedPath = encodeURIComponent(path);
+    console.log('Encoded path:', encodedPath);
+    
     const result = await axios.post(
       uploadUrl,
       formData,
       {
-        params: { workspace, path },
+        params: { workspace, path: encodedPath },
         headers: {
           ...headers,
           ...formData.getHeaders()
