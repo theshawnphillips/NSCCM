@@ -2,11 +2,11 @@
 frontend:
   - task: "New Document Creation"
     implemented: true
-    working: true
+    working: false
     file: "/app/src/views/Files.vue"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
       - working: "NA"
         agent: "testing"
@@ -26,16 +26,20 @@ frontend:
       - working: true
         agent: "testing"
         comment: "Document creation is now working successfully when using the 'Batch Project' folder inside the 'Design' folder. The API returns a successful response with status code 200 and the correct path 'Design\\Batch Project\\BatchTest_1751914354.epr'. The issue with the 'Empty names are not allowed' error has been resolved by using the 'Batch Project' subfolder as specified in the review request. However, there's a minor issue where the newly created document doesn't immediately appear in the file list, even though the API confirms successful creation."
+      - working: false
+        agent: "testing"
+        comment: "Final verification testing reveals an issue with the folder tree rendering. While the Design folder is visible and can be expanded, the Batch Project subfolder is not consistently visible in the UI. In some cases, the folder tree shows all subfolders correctly, but in most attempts, the subfolders don't appear after expanding the Design folder. This inconsistency prevents reliable selection of the Batch Project folder, which is required for successful document creation. The issue appears to be related to the folder tree rendering or state management in the UI."
 
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 6
+  test_sequence: 7
 
 test_plan:
   current_focus:
     - "New Document Creation"
-  stuck_tasks: []
+  stuck_tasks: 
+    - "New Document Creation"
   test_all: false
   test_priority: "high_first"
 
@@ -54,4 +58,6 @@ agent_communication:
     message: "After additional testing with detailed request/response logging, I've confirmed that the document creation is still failing with the same error. The proxy logs show that the request is being sent correctly with the path parameter as 'Design/DebugTest_1751913375.epr', and the file is being included in the request with the correct name and size (6144 bytes). The issue appears to be on the API side, which is still rejecting the request with the same error message. The folder tree is now displaying correctly, showing the 'Design' folder. The problem might be related to how the API expects the path parameter to be formatted or how it's processing the file upload request. It's possible that the API requires a different format for the path parameter or additional parameters that are not being sent."
   - agent: "testing"
     message: "I've successfully tested the document creation functionality using the 'Batch Project' folder inside the 'Design' folder as specified in the review request. The document creation now works correctly - the API returns a successful response with status code 200 and the correct path. The issue with the 'Empty names are not allowed' error has been resolved by using the 'Batch Project' subfolder. There's a minor UI issue where the newly created document doesn't immediately appear in the file list, even though the API confirms successful creation. This might be due to a caching issue or a problem with refreshing the file list after document creation."
+  - agent: "testing"
+    message: "Final verification testing reveals an issue with the folder tree rendering. While the Design folder is visible and can be expanded, the Batch Project subfolder is not consistently visible in the UI. In some cases, the folder tree shows all subfolders correctly, but in most attempts, the subfolders don't appear after expanding the Design folder. This inconsistency prevents reliable selection of the Batch Project folder, which is required for successful document creation. The issue appears to be related to the folder tree rendering or state management in the UI. The fix to re-select the current folder after refresh may not be sufficient if the folder tree itself is not rendering correctly."
 ```
