@@ -45,4 +45,42 @@ app.get('/proxy/token', async (req, res) => {
   }
 });
 
+// Proxy for EngageCX file upload endpoint
+app.post('/proxy/files/upload', upload.single('file'), async (req, res) => {
+  try {
+    const { workspace, path, token } = req.query;
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+    
+    const headers = {};
+    if (token) {
+      const basicAuth = Buffer.from(`TOKEN:${token}:`).toString('base64');
+      headers['Authorization'] = `Basic ${basicAuth}`;
+    }
+    
+    // Create form data for the upstream request
+    const FormData = (await import('form-data')).default;
+    const formData = new FormData();
+    formData.append('file', req.file.buffer, req.file.originalname);
+    
+    const result = await axios.post(
+      `https://engagecxdemo-enterprise.mhccom.net/api/v2/files/content`,
+      formData,
+      {
+        params: { workspace, path },
+        headers: {
+          ...headers,
+          ...formData.getHeaders()
+        }
+      }
+    );
+    
+    res.json(result.data);
+  } catch (e) {
+    console.error('Upload proxy error:', e.response?.data || e.message);
+    res.status(e.response?.status || 500).json(e.response?.data || { error: e.message });
+  }
+});
+
 app.listen(PORT, () => console.log(`Proxy running on port ${PORT}`));
