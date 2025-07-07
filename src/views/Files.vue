@@ -143,6 +143,11 @@ async function createNewDocument() {
     // Refresh the file list to show the new document
     await showAndRunApiCall()
     
+    // Re-select the current folder to update the file list display
+    if (selectedFolderPath.value) {
+      selectFolder(selectedFolderPath.value)
+    }
+    
     closeModal()
   } catch (error) {
     console.error('Upload error:', error)
