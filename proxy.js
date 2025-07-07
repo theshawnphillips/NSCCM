@@ -49,6 +49,13 @@ app.get('/proxy/token', async (req, res) => {
 app.post('/proxy/files/upload', upload.single('file'), async (req, res) => {
   try {
     const { workspace, path, token } = req.query;
+    console.log('Upload request - workspace:', workspace, 'path:', path, 'token:', token ? 'present' : 'missing');
+    console.log('File info:', req.file ? { 
+      originalname: req.file.originalname, 
+      size: req.file.size,
+      mimetype: req.file.mimetype 
+    } : 'no file');
+    
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
     }
@@ -64,8 +71,12 @@ app.post('/proxy/files/upload', upload.single('file'), async (req, res) => {
     const formData = new FormData();
     formData.append('file', req.file.buffer, req.file.originalname);
     
+    const uploadUrl = `https://engagecxdemo-enterprise.mhccom.net/api/v2/files/content`;
+    console.log('Making request to:', uploadUrl);
+    console.log('Query params:', { workspace, path });
+    
     const result = await axios.post(
-      `https://engagecxdemo-enterprise.mhccom.net/api/v2/files/content`,
+      uploadUrl,
       formData,
       {
         params: { workspace, path },
