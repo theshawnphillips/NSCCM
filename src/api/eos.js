@@ -94,9 +94,45 @@ export async function getTokenViaProxy(username, password) {
   }
 }
 
+// Upload new document via proxy
+export async function uploadNewDocumentViaProxy({ token, workspace = 'Default', path, fileName }) {
+  try {
+    // First, get the NewDocument.epr template file
+    const templateResponse = await fetch('/NewDocument.epr')
+    if (!templateResponse.ok) {
+      throw new Error('Failed to load document template')
+    }
+    const templateBlob = await templateResponse.blob()
+    
+    // Create FormData for the upload
+    const formData = new FormData()
+    formData.append('file', templateBlob, fileName)
+    
+    const response = await axios.post('/proxy/files/upload', formData, {
+      params: {
+        workspace,
+        path,
+        token: token.replace(/^TOKEN:/, '')
+      },
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    
+    return response.data
+  } catch (e) {
+    console.error('Upload error:', e)
+    if (e.response) {
+      console.error('Upload error response:', e.response)
+    }
+    throw e
+  }
+}
+
 export default {
   getFilesAndFolders,
   getFilesAndFoldersWithToken,
   getFilesAndFoldersViaProxy,
-  getTokenViaProxy
+  getTokenViaProxy,
+  uploadNewDocumentViaProxy
 };
