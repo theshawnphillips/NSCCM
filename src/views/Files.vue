@@ -80,31 +80,74 @@ import eos from '../api/eos'
 
 import { nextTick } from 'vue'
 
-// New file name input logic
-const showNewInput = ref(false)
-const newFileName = ref('')
-const newFileInput = ref(null)
+// New document functionality
+const showNewDocumentModal = ref(false)
+const newDocumentName = ref('')
+const newDocumentInput = ref(null)
+const isUploading = ref(false)
+const uploadError = ref('')
 
 function onNewClick() {
-  newFileName.value = ''
-  showNewInput.value = true
+  if (!selectedFolderPath.value) {
+    alert('Please select a folder first')
+    return
+  }
+  newDocumentName.value = ''
+  uploadError.value = ''
+  showNewDocumentModal.value = true
   nextTick(() => {
-    if (newFileInput.value) newFileInput.value.focus()
+    if (newDocumentInput.value) newDocumentInput.value.focus()
   })
 }
 
-function submitNewFileName() {
-  if (newFileName.value.trim()) {
-    // Replace this alert with your upload/modal logic as needed
-    alert('New file name: ' + newFileName.value.trim())
-  }
-  showNewInput.value = false
-  newFileName.value = ''
+function closeModal() {
+  showNewDocumentModal.value = false
+  newDocumentName.value = ''
+  uploadError.value = ''
+  isUploading.value = false
 }
 
-function cancelNewFileName() {
-  showNewInput.value = false
-  newFileName.value = ''
+async function createNewDocument() {
+  if (!newDocumentName.value.trim()) {
+    uploadError.value = 'Please enter a document name'
+    return
+  }
+  
+  let fileName = newDocumentName.value.trim()
+  // Add .epr extension if not provided
+  if (!fileName.toLowerCase().endsWith('.epr')) {
+    fileName += '.epr'
+  }
+  
+  isUploading.value = true
+  uploadError.value = ''
+  
+  try {
+    const token = localStorage.getItem('eosToken')
+    if (!token) {
+      throw new Error('No authentication token found')
+    }
+    
+    // Construct the full path for the new document
+    const fullPath = selectedFolderPath.value ? `${selectedFolderPath.value}\\${fileName}` : fileName
+    
+    await eos.uploadNewDocumentViaProxy({
+      token,
+      workspace: 'Default',
+      path: fullPath,
+      fileName
+    })
+    
+    // Refresh the file list to show the new document
+    await showAndRunApiCall()
+    
+    closeModal()
+  } catch (error) {
+    console.error('Upload error:', error)
+    uploadError.value = error.message || 'Failed to create document'
+  } finally {
+    isUploading.value = false
+  }
 }
 
 import { useRouter } from 'vue-router'
