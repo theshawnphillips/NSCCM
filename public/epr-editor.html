@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EPR Editor</title>
+  <style>
+    body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f7fafd; }
+    .epr-header { background: #005580; color: #fff; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .epr-header h2 { margin: 0; font-size: 1.3rem; }
+    .close-btn { background: #fff; color: #005580; border: none; border-radius: 6px; padding: 0.5rem 1.2rem; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .close-btn:hover { background: #00b6e3; color: #fff; }
+    iframe { width: 100vw; height: calc(100vh - 60px); border: none; display: block; }
+  </style>
+</head>
+<body>
+  <div class="epr-header">
+    <h2>EPR Editor</h2>
+    <button class="close-btn" onclick="window.close()">Close and Return to Files</button>
+  </div>
+  <iframe id="eprFrame" src="about:blank"></iframe>
+  <script>
+    // Get the EPR editor URL from the query string
+    const params = new URLSearchParams(window.location.search);
+    const eprUrl = params.get('url');
+    if (eprUrl) {
+      document.getElementById('eprFrame').src = decodeURIComponent(eprUrl);
+    } else {
+      document.getElementById('eprFrame').src = 'about:blank';
+    }
+  </script>
+</body>
+</html>

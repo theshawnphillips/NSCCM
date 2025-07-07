@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- File generated using MHC Studio 2025 25.03.1 build 12392 -->
+<xfd:document xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:xf="http://www.ecrion.com/xf/1.0" xmlns:xfd="http://www.ecrion.com/xfd/1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xc="http://www.ecrion.com/2008/xc" fo:font-family="Arial" xf:spelling-dictionaries="en_US" xf:document-language="en_US" fo:input-language="en">
+	<xf:pdf-page-settings pdf-conformance="PDFWCAG2.1" />
+	<xf:stylesheet src="data:;base64,LypEZWZhdWx0IHN0eWxlcyovDQouTm9ybWFsDQp7DQoJZm9udC1mYW1pbHk6IENhbGlicmksVGltZXMgTmV3IFJvbWFuOw0KCWZvbnQtc2l6ZTogOHB0Ow0KfQ0KDQouTm9TcGFjaW5nDQp7DQoJZm9udC1mYW1pbHk6IENhbGlicmksVGltZXMgTmV3IFJvbWFuOw0KCWZvbnQtc2l6ZTogOHB0Ow0KfQ0KDQouSGVhZGluZzENCnsNCglmb250LWZhbWlseTogQ2FtYnJpYSxUaW1lcyBOZXcgUm9tYW47DQoJZm9udC1zaXplOiAxMHB0Ow0KCWZvbnQtd2VpZ2h0OiBib2xkOw0KCWNvbG9yOiAjMzY1RjkxOw0KfQ0KDQouSGVhZGluZzINCnsNCglmb250LWZhbWlseTogQ2FtYnJpYSxUaW1lcyBOZXcgUm9tYW47DQoJZm9udC1zaXplOiAxMHB0Ow0KCWZvbnQtd2VpZ2h0OiBib2xkOw0KCWNvbG9yOiAjNEY4MUJEOw0KfQ0KDQouVGl0bGUNCnsNCglmb250LWZhbWlseTogQ2FtYnJpYSxUaW1lcyBOZXcgUm9tYW47DQoJZm9udC1zaXplOiAyMHB0Ow0KCWZvbnQtd2VpZ2h0OiBib2xkOw0KCWNvbG9yOiAjMTczNjVEOw0KfQ0KDQouU3VidGl0bGUNCnsNCglmb250LWZhbWlseTogQ2FtYnJpYSxUaW1lcyBOZXcgUm9tYW47DQoJZm9udC1zaXplOiA5cHQ7DQoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7DQoJZm9udC1zdHlsZTogaXRhbGljOwkNCgljb2xvcjogIzRGODFCRDsNCn0NCg0KLlN1YnRpdGxlRW1waGFzaXMNCnsNCglmb250LWZhbWlseTogQ2FtYnJpYSxUaW1lcyBOZXcgUm9tYW47DQoJZm9udC1zaXplOiA5cHQ7DQoJdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7DQoJY29sb3I6ICM4MDgwODA7DQp9DQoNCi5FbXBoYXNpcw0Kew0KCWZvbnQtc3R5bGU6IGl0YWxpYzsJDQoJZm9udC1zaXplOiAxOXB0Ow0KCWZvbnQtZmFtaWx5OiBDYW1icmlhLFRpbWVzIE5ldyBSb21hbjsNCn0NCg0KLkludGVuc2VFbXBoYXNpcw0Kew0KCWZvbnQtZmFtaWx5OiBDYW1icmlhLFRpbWVzIE5ldyBSb21hbjsNCglmb250LXNpemU6IDE5cHQ7DQoJZm9udC1zdHlsZTogaXRhbGljOw0KCWZvbnQtd2VpZ2h0OiBib2xkOw0KCWNvbG9yOiAjNEY4MUJEOw0KfQ0KDQouU3Ryb25nDQp7DQoJZm9udC1mYW1pbHk6IENhbWJyaWEsVGltZXMgTmV3IFJvbWFuOw0KCWZvbnQtc2l6ZTogMTlwdDsNCglmb250LXdlaWdodDogYm9sZDsNCn0=" default-stylesheet="true" />
+	<xfd:localization>
+		<xfd:locale language-id="en_US" language-name="English (United States)" />
+	</xfd:localization>
+	<xf:info title="Test" author="e" subject="e" keywords="e" />
+	<xfd:xslt-engine name="MsXml" />
+	<fo:layout-master-set>
+		<fo:simple-page-master master-name="Letter Page" page-width="612pt" page-height="792pt">
+			<fo:region-body region-name="xsl-region-body" margin="50.4pt"/>
+			<fo:region-before region-name="xsl-region-before" extent="50.4pt" display-align="after"/>
+			<fo:region-after region-name="xsl-region-after" extent="50.4pt"/>
+			<fo:region-start region-name="xsl-region-start" extent="50.4pt"/>
+			<fo:region-end region-name="xsl-region-end" extent="50.4pt"/>
+		</fo:simple-page-master>
+	</fo:layout-master-set>
+	<fo:page-sequence master-reference="Letter Page" letter-spacing="1.6px"  line-height="150%">
+		<fo:static-content flow-name="xsl-region-before">
+			<fo:block>&#x00A0;</fo:block>
+		</fo:static-content>
+		<fo:static-content flow-name="xsl-region-after">
+			<fo:block>&#x00A0;</fo:block>
+		</fo:static-content>
+		<fo:static-content flow-name="xsl-region-start">
+			<fo:block>&#x00A0;</fo:block>
+		</fo:static-content>
+		<fo:static-content flow-name="xsl-region-end">
+			<fo:block>&#x00A0;</fo:block>
+		</fo:static-content>
+		<fo:flow flow-name="xsl-region-body">
+			<fo:block font-weight="bold">What is Lorem Ipsum?</fo:block>
+			<fo:block>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</fo:block>
+			<fo:block>&#x00A0;</fo:block>
+			<fo:block font-weight="bold">Why do we use it?</fo:block>
+			<fo:block>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</fo:block>
+			<fo:block>&#x00A0;</fo:block>
+			<fo:block>&#x00A0;</fo:block>
+			<fo:block font-weight="bold">Where does it come from?</fo:block>
+			<fo:block>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</fo:block>
+			<fo:block>&#x00A0;</fo:block>
+			<fo:block>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</fo:block>
+		</fo:flow>
+	</fo:page-sequence>
+</xfd:document>
